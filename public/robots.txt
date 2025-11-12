@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://muhammedfaheem.vercel.app/sitemap.xml
+
+# SEO Directives
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
