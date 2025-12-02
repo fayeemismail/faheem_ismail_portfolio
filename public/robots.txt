@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://muhammedfaheem.vercel.app/sitemap.xml
+Sitemap: https://faheem-ismail.vercel.app//sitemap.xml
 
 # SEO Directives
 User-agent: Googlebot
