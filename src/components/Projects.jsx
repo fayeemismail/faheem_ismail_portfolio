@@ -1,148 +1,248 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useIntersection } from '../hooks/useIntersection';
+
+const PROJECTS = [
+  {
+    num: '01',
+    title: 'Celoura Travels',
+    category: 'Full-Stack Web App',
+    description:
+      'A travel guide platform connecting users with verified local guides, featuring real-time chat, rich destination visuals, and secure payments — built with MERN stack and clean architecture principles.',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT', 'Razorpay'],
+    github: 'https://github.com/fayeemismail/celoura-server',
+    live: null,
+    image: '/images/celoura.webp',
+  },
+  {
+    num: '02',
+    title: 'Netflix Clone',
+    category: 'Frontend Application',
+    description:
+      'A Netflix-inspired streaming platform with clean code, responsive design, and real-world functionality. Showcases modern frontend practices, UI precision, and sophisticated development workflow.',
+    technologies: ['React', 'Firebase', 'TMDb API', 'React Router', 'Firebase Auth'],
+    github: 'https://github.com/fayeemismail/NETFLIX-clone-REACT',
+    live: 'https://netflix-clone-app5.vercel.app/',
+    image: '/images/netflix.webp',
+  },
+  {
+    num: '03',
+    title: 'Meehaf eCommerce',
+    category: 'Full-Stack Platform',
+    description:
+      'A modern eCommerce web application for sports products with complete product management, user authentication, secure Razorpay payments, and a responsive shopping experience.',
+    technologies: ['Node.js', 'Express.js', 'MongoDB', 'Bootstrap', 'Razorpay', 'EJS'],
+    github: 'https://github.com/fayeemismail/meehaf',
+    live: 'https://meehaf.onrender.com/',
+    image: '/images/ecommerce.webp',
+  },
+  {
+    num: '04',
+    title: 'Truth or Dare',
+    category: 'Interactive Web Game',
+    description:
+      'A fun and interactive web-based party game with a spin wheel, persistent localStorage state, responsive design for mobile and desktop, and a smooth modern UI for an engaging experience.',
+    technologies: ['React', 'TailwindCSS', 'LocalStorage'],
+    github: 'https://github.com/fayeemismail/truth-or-dare-application',
+    live: 'https://truth-or-dare-fa.vercel.app/',
+    image: '/images/truthordare.webp',
+  },
+];
+
+/* GitHub icon SVG */
+const GitHubIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+  </svg>
+);
+
+const ProjectCard = ({ project, delay, visible }) => (
+  <div
+    className={`project-card reveal reveal-delay-${delay}${visible ? ' visible' : ''}`}
+  >
+    {/* Image */}
+    <div style={{ height: 240, position: 'relative', overflow: 'hidden', background: 'var(--navy-light)' }}>
+      <img
+        src={project.image}
+        alt={project.title}
+        style={{
+          width: '100%', height: '100%', objectFit: 'cover',
+          transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)',
+        }}
+        onMouseEnter={e => e.target.style.transform = 'scale(1.06)'}
+        onMouseLeave={e => e.target.style.transform = 'scale(1)'}
+      />
+      {/* Gradient overlay */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to top, rgba(10,14,26,0.95) 0%, rgba(10,14,26,0.4) 60%, transparent 100%)',
+      }} />
+
+      {/* Category badge */}
+      <div style={{ position: 'absolute', top: 20, left: 20 }}>
+        <span style={{
+          fontFamily: "'DM Mono', monospace",
+          fontSize: 10, letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          background: 'rgba(10,14,26,0.8)',
+          border: '1px solid rgba(201,168,76,0.3)',
+          color: 'var(--gold)',
+          padding: '5px 12px', borderRadius: 2,
+        }}>
+          {project.category}
+        </span>
+      </div>
+
+      {/* Large decorative number */}
+      <div style={{ position: 'absolute', top: 20, right: 20 }}>
+        <span style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: 48, fontWeight: 700,
+          color: 'rgba(201,168,76,0.2)', lineHeight: 1,
+        }}>
+          {project.num}
+        </span>
+      </div>
+    </div>
+
+    {/* Content */}
+    <div style={{ padding: '32px 32px 28px' }}>
+      <h3 style={{
+        fontFamily: "'Cormorant Garamond', serif",
+        fontSize: 28, fontWeight: 400,
+        color: 'var(--cream)', marginBottom: 12,
+      }}>
+        {project.title}
+      </h3>
+      <p style={{
+        fontSize: 14, lineHeight: 1.8,
+        color: 'rgba(242,237,215,0.6)',
+        fontWeight: 300, marginBottom: 24,
+      }}>
+        {project.description}
+      </p>
+
+      {/* Tech pills */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 28 }}>
+        {project.technologies.map((t, j) => (
+          <span key={j} className="skill-pill" style={{ fontSize: 10 }}>{t}</span>
+        ))}
+      </div>
+
+      {/* Action links */}
+      <div style={{
+        display: 'flex', gap: 20,
+        borderTop: '1px solid rgba(201,168,76,0.08)',
+        paddingTop: 24,
+      }}>
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            fontFamily: "'DM Mono', monospace",
+            fontSize: 11, letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            color: 'var(--muted)',
+            textDecoration: 'none',
+            display: 'flex', alignItems: 'center', gap: 8,
+            transition: 'color 0.3s',
+          }}
+          onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
+          onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}
+        >
+          <GitHubIcon /> Source Code
+        </a>
+
+        {project.live && (
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 11, letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: 'var(--gold)',
+              textDecoration: 'none',
+              display: 'flex', alignItems: 'center',
+              gap: 8, marginLeft: 'auto',
+              transition: 'gap 0.3s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.gap = '14px'}
+            onMouseLeave={e => e.currentTarget.style.gap = '8px'}
+          >
+            Live Demo →
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+);
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "Celoura Travels",
-      description: `<strong>Celoura</strong> is a travel guide web application that connects users with verified 
-      local guides, showcases destinations with rich visuals, supports real-time chat, and offers secure payments — all built using the <strong>MERN stack with TypeScript</strong> and clean architecture principles.`,
-      technologies: ["React", "Node.js", "MongoDB", "Express", "JWT", "Razorpay"],
-      github: "https://github.com/fayeemismail/celoura-server",
-      image: "/images/celoura.webp"
-    },
-    {
-      title: "Netflix Clone React",
-      description: `A <strong>Netflix-inspired streaming platform clone</strong> that focuses on clean code, 
-      responsive design, and real-world functionality using <strong>React</strong> and <strong>Firebase</strong>. 
-      It showcases modern frontend practices and serves as a demonstration of UI precision and development workflow.`,
-      technologies: ["React", "Firebase", "Toast", "React Router", "Firebase Authentication", "TMDb API Integration"],
-      github: "https://github.com/fayeemismail/NETFLIX-clone-REACT",
-      live: "https://netflix-clone-app5.vercel.app/",
-      image: "/images/netflix.webp"
-    },
-    {
-      title: "Truth or Dare",
-      description: `<strong>Truth or Dare</strong> is a fun and interactive <strong>web-based game</strong> built using the <strong>MERN stack</strong> with <strong>React, TailwindCSS, and Node.js</strong>. 
-  Players can join the game by entering their names, spin the wheel to select a player, choose between Truth or Dare, and complete fun, spicy, or funny tasks. 
-  The app features persistent game state using <strong>localStorage</strong>, responsive design for mobile and desktop, and a smooth, modern UI for an engaging gameplay experience.`,
-      technologies: ["React", "TailwindCSS", "LocalStorage"],
-      github: "https://github.com/fayeemismail/truth-or-dare-application",
-      live: "https://truth-or-dare-fa.vercel.app/",
-      image: "/images/truthordare.webp"
-    },
-    {
-      title: "Meehaf eCommerce",
-      description: `<strong>Meehaf</strong> is a modern <strong>eCommerce web application</strong> built using the <strong>MERN stack</strong>. 
-      It allows users to browse, search, and purchase sports products seamlessly. 
-      The platform includes features like product management, user authentication, secure payments, and a responsive interface for a smooth shopping experience.`,
-      technologies: ["HTML", "CSS", "Express.js", "Node.js", "Bootstrap", "Razorpay"],
-      github: "https://github.com/fayeemismail/meehaf",
-      live: "https://meehaf.onrender.com/",
-      image: "/images/ecommerce.webp"
-    }
-  ];
-
-  const handleProjectClick = (project, type) => {
-    if (type === 'github' && project.github) {
-      window.open(project.github, '_blank', 'noopener,noreferrer');
-    } else if (type === 'live' && project.live) {
-      window.open(project.live, '_blank', 'noopener,noreferrer');
-    }
-  };
+  const ref = useRef(null);
+  const vis = useIntersection(ref);
 
   return (
-    <section id="projects" className="py-20 px-6 bg-[#F5EEDC]">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl font-bold text-[#406008] mb-12 text-center">Featured Projects</h2>
+    <section
+      id="projects"
+      ref={ref}
+      style={{
+        padding: '120px 40px',
+        background: 'var(--midnight)',
+        position: 'relative',
+      }}
+    >
+      {/* Ambient glow */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.04) 0%, transparent 60%)',
+        pointerEvents: 'none',
+      }} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 cursor-pointer group flex flex-col h-full"
-            >
-              {/* Clickable Image Area */}
-              <div
-                className="h-48 relative overflow-hidden group flex-shrink-0"
-                onClick={() => project.live && handleProjectClick(project, 'live')}
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-4">
-                    {project.live && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleProjectClick(project, 'live');
-                        }}
-                        className="bg-[#406008] text-white px-4 py-2 rounded-lg hover:bg-[#345006] transition-colors"
-                      >
-                        Live Demo
-                      </button>
-                    )}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleProjectClick(project, 'github');
-                      }}
-                      className="bg-white text-[#406008] px-4 py-2 rounded-lg hover:bg-[#F5EEDC] transition-colors border border-[#406008]"
-                    >
-                      View Code
-                    </button>
-                  </div>
-                </div>
-              </div>
+      <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
 
-              {/* Project Content */}
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex-grow">
-                  <h3 className="text-xl font-bold text-[#406008] mb-3">{project.title}</h3>
-                  <p
-                    className="text-[#000000] mb-4 leading-relaxed whitespace-pre-line"
-                    dangerouslySetInnerHTML={{ __html: project.description }}
-                  ></p>
+        {/* Header row */}
+        <div
+          className={`reveal${vis ? ' visible' : ''}`}
+          style={{
+            marginBottom: 72,
+            display: 'flex', justifyContent: 'space-between',
+            alignItems: 'flex-end', flexWrap: 'wrap', gap: 20,
+          }}
+        >
+          <div>
+            <p className="section-label">Portfolio</p>
+            <h2 style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: 'clamp(40px, 5vw, 64px)',
+              fontWeight: 300,
+              color: 'var(--cream)', lineHeight: 1.1,
+            }}>
+              Featured<br />
+              <span className="text-gold-gradient" style={{ fontStyle: 'italic' }}>Projects</span>
+            </h2>
+          </div>
+          <p style={{
+            fontSize: 14, color: 'var(--muted)',
+            maxWidth: 280, lineHeight: 1.7, fontWeight: 300,
+          }}>
+            A selection of my most impactful work, each built with care and precision.
+          </p>
+        </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="bg-[#F5EEDC] text-[#406008] px-2 py-1 rounded text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex space-x-4 mt-auto pt-4">
-                  <button
-                    onClick={() => handleProjectClick(project, 'github')}
-                    className="flex items-center text-[#406008] hover:text-[#345006] font-medium transition-colors duration-300 flex-1 justify-center py-2 border border-[#406008] rounded-lg hover:bg-[#F5EEDC]"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                    Code
-                  </button>
-                  {project.live && (
-                    <button
-                      onClick={() => handleProjectClick(project, 'live')}
-                      className="flex items-center text-white bg-[#406008] hover:bg-[#345006] font-medium transition-colors duration-300 flex-1 justify-center py-2 rounded-lg"
-                    >
-                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                      Live Demo
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
+        {/* Project cards */}
+        <div
+          className="projects-grid"
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(520px, 1fr))', gap: 2 }}
+        >
+          {PROJECTS.map((p, i) => (
+            <ProjectCard
+              key={i}
+              project={p}
+              delay={(i % 2) + 1}
+              visible={vis}
+            />
           ))}
         </div>
       </div>

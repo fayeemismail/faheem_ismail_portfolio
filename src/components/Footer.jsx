@@ -1,64 +1,84 @@
 import React from 'react';
 
-const Footer = () => {
-  return (
-    <footer className="bg-[#406008] text-white py-8 px-6">
-      <div className="container mx-auto max-w-4xl">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-xl font-bold">Muhammed Faheem</p>
-            <p className="text-[#8E9B6D]">MERN Stack Developer</p>
-          </div>
-          
-          <div className="flex space-x-6">
-            <a
-              href="https://linkedin.com/in/faheemismail"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#8E9B6D] transition-colors duration-300"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/fayeemismail"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#8E9B6D] transition-colors duration-300"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://instagram.com/faheem_ismail_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#8E9B6D] transition-colors duration-300"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://wa.me/919562062494"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-[#8E9B6D] transition-colors duration-300"
-            >
-              WhatsApp
-            </a>
-            <a
-              href="mailto:faheemmuhammed703@gmail.com"
-              className="text-white hover:text-[#8E9B6D] transition-colors duration-300"
-            >
-              Email
-            </a>
-          </div>
-        </div>
-        
-        <div className="border-t border-[#8E9B6D] mt-6 pt-6 text-center text-sm text-[#8E9B6D]">
-          <p>&copy; {new Date().getFullYear()} Muhammed Faheem. All rights reserved.</p>
-          <p className="mt-2">Built with React & Tailwind CSS</p>
-        </div>
+const FOOTER_LINKS = [
+  ['LinkedIn',  'https://linkedin.com/in/faheemismail'],
+  ['GitHub',    'https://github.com/fayeemismail'],
+  ['Instagram', 'https://instagram.com/faheem_ismail_'],
+  ['WhatsApp',  'https://wa.me/919562062494'],
+  ['Email',     'mailto:faheemmuhammed703@gmail.com'],
+];
+
+const Footer = () => (
+  <footer style={{
+    background: 'var(--midnight)',
+    borderTop: '1px solid rgba(201,168,76,0.12)',
+    padding: '48px 40px',
+  }}>
+    <div
+      className="footer-inner"
+      style={{
+        maxWidth: 1200, margin: '0 auto',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap', gap: 24,
+      }}
+    >
+      {/* Brand */}
+      <div>
+        <p style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: 20, fontWeight: 400,
+          letterSpacing: '0.1em',
+          color: 'var(--cream)', marginBottom: 4,
+        }}>
+          M<span style={{ color: 'var(--gold)' }}>.</span>Faheem
+        </p>
+        <p style={{
+          fontFamily: "'DM Mono', monospace",
+          fontSize: 10, letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: 'var(--muted)',
+        }}>
+          MERN Stack Developer
+        </p>
       </div>
-    </footer>
-  );
-};
+
+      {/* Navigation links */}
+      <div className="footer-links" style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+        {FOOTER_LINKS.map(([label, href]) => (
+          <a
+            key={label}
+            href={href}
+            target={href.startsWith('mailto') || href.startsWith('tel') ? undefined : '_blank'}
+            rel="noreferrer"
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 10, letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: 'var(--muted)',
+              textDecoration: 'none',
+              transition: 'color 0.3s',
+            }}
+            onMouseEnter={e => e.target.style.color = 'var(--gold)'}
+            onMouseLeave={e => e.target.style.color = 'var(--muted)'}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+
+      {/* Copyright */}
+      <p style={{
+        fontFamily: "'DM Mono', monospace",
+        fontSize: 10,
+        color: 'rgba(242,237,215,0.25)',
+        letterSpacing: '0.1em',
+      }}>
+        © {new Date().getFullYear()} · Crafted with precision
+      </p>
+    </div>
+  </footer>
+);
 
 export default Footer;

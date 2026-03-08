@@ -4,105 +4,265 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- FOUC Prevention -->
+    <style>
+      body { visibility: hidden; }
+    </style>
+
+    <!-- Font Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23406008'/><text x='50' y='68' font-family='Arial, sans-serif' font-size='60' text-anchor='middle' fill='%23F5EEDC'>F</text></svg>" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230A0E1A'/><text x='50' y='68' font-family='Georgia, serif' font-size='60' text-anchor='middle' fill='%23C9A84C'>F</text></svg>" />
 
-    <!-- Primary Meta Tags -->
+    <!-- ═══════════════════════════════════════════
+         PRIMARY META TAGS
+    ═══════════════════════════════════════════ -->
     <title>Muhammed Faheem - Web Developer in Kozhikode, Kerala | MERN Stack Portfolio</title>
-    <meta name="title" content="Muhammed Faheem - Web Developer in Kozhikode, Kerala | MERN Stack Portfolio">
+    <meta name="title"       content="Muhammed Faheem - Web Developer in Kozhikode, Kerala | MERN Stack Portfolio">
     <meta name="description" content="Muhammed Faheem - Web Developer in Kozhikode, Kerala. 2+ years of experience building scalable MERN stack applications with React.js, Node.js, MongoDB, and TypeScript.">
-    <meta name="keywords" content="Web Developer Kozhikode, Software Developer Kerala, MERN Stack Developer Kozhikode, Full-Stack Developer Kerala, Faheem Ismail Portfolio, React.js, Node.js, MongoDB, TypeScript, JavaScript">
-    <meta name="author" content="Muhammed Faheem">
-    <meta name="robots" content="index, follow">
+    <meta name="keywords"    content="Web Developer Kozhikode, Software Developer Kerala, MERN Stack Developer Kozhikode, Full-Stack Developer Kerala, Faheem Ismail Portfolio, React Developer Kerala, Node.js Developer Kozhikode, MongoDB Developer, TypeScript Developer India, JavaScript Developer Kerala, Hire Web Developer Kozhikode, Freelance Developer Kerala, Next.js Developer Kerala">
+    <meta name="author"      content="Muhammed Faheem">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://faheem-ismail.vercel.app/">
-    <meta property="og:title" content="Muhammed Faheem - Web Developer in Kozhikode, Kerala">
+    <!-- ═══════════════════════════════════════════
+         GOOGLEBOT / CRAWLERS
+    ═══════════════════════════════════════════ -->
+    <meta name="robots"               content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot"            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot"              content="index, follow">
+    <meta name="revisit-after"        content="7 days">
+    <meta name="language"             content="English">
+    <meta name="geo.region"           content="IN-KL">
+    <meta name="geo.placename"        content="Kozhikode, Kerala, India">
+    <meta name="geo.position"         content="11.2588;75.7804">
+    <meta name="ICBM"                 content="11.2588, 75.7804">
+    <meta name="rating"               content="general">
+    <meta name="category"             content="Technology, Web Development, Software Engineering">
+    <meta name="classification"       content="Portfolio, Personal Website">
+    <meta name="coverage"             content="Worldwide">
+    <meta name="distribution"         content="Global">
+    <meta name="target"               content="all">
+    <meta name="HandheldFriendly"     content="True">
+    <meta name="MobileOptimized"      content="320">
+
+    <!-- ═══════════════════════════════════════════
+         OPEN GRAPH / FACEBOOK
+    ═══════════════════════════════════════════ -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://faheem-ismail.vercel.app/">
+    <meta property="og:title"       content="Muhammed Faheem - Web Developer in Kozhikode, Kerala">
     <meta property="og:description" content="2+ years experience building scalable web apps using MERN stack. Based in Kozhikode, Kerala.">
-    <meta property="og:image" content="https://faheem-ismail.vercel.app/images/fayeem.webp">
-    <meta property="og:image:width" content="1200">
+    <meta property="og:image"       content="https://faheem-ismail.vercel.app/images/fayeem.webp">
+    <meta property="og:image:width"  content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Faheem Ismail Portfolio">
+    <meta property="og:image:alt"    content="Muhammed Faheem - MERN Stack Developer">
+    <meta property="og:site_name"    content="Faheem Ismail Portfolio">
+    <meta property="og:locale"       content="en_IN">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://faheem-ismail.vercel.app/">
-    <meta property="twitter:title" content="Muhammed Faheem - Web Developer in Kozhikode, Kerala">
+    <!-- ═══════════════════════════════════════════
+         TWITTER
+    ═══════════════════════════════════════════ -->
+    <meta property="twitter:card"        content="summary_large_image">
+    <meta property="twitter:url"         content="https://faheem-ismail.vercel.app/">
+    <meta property="twitter:title"       content="Muhammed Faheem - Web Developer in Kozhikode, Kerala">
     <meta property="twitter:description" content="Full-Stack Developer with expertise in React.js, Node.js, MongoDB, and TypeScript. Based in Kozhikode, Kerala.">
-    <meta property="twitter:image" content="https://faheem-ismail.vercel.app/images/fayeem.webp">
-    <meta property="twitter:creator" content="@fayeemismail">
+    <meta property="twitter:image"       content="https://faheem-ismail.vercel.app/images/fayeem.webp">
+    <meta property="twitter:image:alt"   content="Muhammed Faheem - MERN Stack Developer">
+    <meta property="twitter:creator"     content="@fayeemismail">
+    <meta property="twitter:site"        content="@fayeemismail">
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://faheem-ismail.vercel.app/">
+    <!-- ═══════════════════════════════════════════
+         CANONICAL + PRELOAD
+    ═══════════════════════════════════════════ -->
+    <link rel="canonical"  href="https://faheem-ismail.vercel.app/" />
+    <link rel="preload"    href="/images/fayeem.webp" as="image" />
 
-    <!-- Preload image -->
-    <link rel="preload" href="/images/fayeem.webp" as="image">
-
-    <!-- Structured Data / JSON-LD -->
+    <!-- ═══════════════════════════════════════════
+         STRUCTURED DATA — Person
+    ═══════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Faheem Ismail",
-      "jobTitle": "Web Developer",
+      "name": "Muhammed Faheem",
+      "alternateName": "Faheem Ismail",
+      "jobTitle": "Full-Stack Web Developer",
       "url": "https://faheem-ismail.vercel.app",
       "image": "https://faheem-ismail.vercel.app/images/fayeem.webp",
+      "email": "faheemmuhammed703@gmail.com",
+      "telephone": "+919562062494",
       "sameAs": [
         "https://github.com/fayeemismail",
-        "https://linkedin.com/in/faheemismail"
+        "https://linkedin.com/in/faheemismail",
+        "https://instagram.com/faheem_ismail_"
       ],
-      "description": "Web Developer based in Kozhikode, Kerala, with 2+ years of experience building scalable web applications using MERN stack.",
+      "description": "Web Developer based in Kozhikode, Kerala, with 2+ years of experience building scalable web applications using MERN stack technologies.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Kozhikode",
         "addressRegion": "Kerala",
-        "addressCountry": "India"
+        "addressCountry": "IN"
       },
       "knowsAbout": [
-        "React.js",
-        "Node.js",
-        "MongoDB",
-        "TypeScript",
-        "JavaScript",
-        "Express.js",
-        "Next.js",
-        "Tailwind CSS",
-        "RESTful APIs",
-        "Web Development"
+        "React.js", "Node.js", "MongoDB", "TypeScript",
+        "JavaScript", "Express.js", "Next.js", "Tailwind CSS",
+        "RESTful APIs", "Web Development", "Full-Stack Development",
+        "AWS", "PostgreSQL", "Redis", "Socket.IO"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Full-Stack Web Developer",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Kozhikode"
+        },
+        "skills": "React.js, Node.js, MongoDB, TypeScript, Next.js, Express.js"
+      }
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════
+         STRUCTURED DATA — WebSite (enables Google Sitelinks searchbox)
+    ═══════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Muhammed Faheem Portfolio",
+      "url": "https://faheem-ismail.vercel.app",
+      "description": "Portfolio of Muhammed Faheem, Full-Stack MERN Developer based in Kozhikode, Kerala.",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammed Faheem"
+      },
+      "inLanguage": "en-IN",
+      "copyrightYear": "2025",
+      "genre": "Portfolio"
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════
+         STRUCTURED DATA — BreadcrumbList
+    ═══════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://faheem-ismail.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "About",      "item": "https://faheem-ismail.vercel.app/#about" },
+        { "@type": "ListItem", "position": 3, "name": "Skills",     "item": "https://faheem-ismail.vercel.app/#skills" },
+        { "@type": "ListItem", "position": 4, "name": "Experience", "item": "https://faheem-ismail.vercel.app/#experience" },
+        { "@type": "ListItem", "position": 5, "name": "Projects",   "item": "https://faheem-ismail.vercel.app/#projects" },
+        { "@type": "ListItem", "position": 6, "name": "Contact",    "item": "https://faheem-ismail.vercel.app/#contact" }
       ]
     }
     </script>
+
+    <!-- ═══════════════════════════════════════════
+         STRUCTURED DATA — ItemList (Projects)
+    ═══════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Projects by Muhammed Faheem",
+      "description": "A list of full-stack web development projects by Muhammed Faheem",
+      "itemListElement": [
+        {
+          "@type": "ListItem", "position": 1,
+          "name": "Celoura Travels",
+          "url": "https://github.com/fayeemismail/celoura-server",
+          "description": "Travel guide web application built with MERN stack connecting users with verified local guides."
+        },
+        {
+          "@type": "ListItem", "position": 2,
+          "name": "Netflix Clone",
+          "url": "https://netflix-clone-app5.vercel.app/",
+          "description": "Netflix-inspired streaming platform clone built with React and Firebase."
+        },
+        {
+          "@type": "ListItem", "position": 3,
+          "name": "Meehaf eCommerce",
+          "url": "https://meehaf.onrender.com/",
+          "description": "Full-stack eCommerce platform for sports products using Node.js and MongoDB."
+        },
+        {
+          "@type": "ListItem", "position": 4,
+          "name": "Truth or Dare",
+          "url": "https://truth-or-dare-fa.vercel.app/",
+          "description": "Interactive web-based party game built with React and TailwindCSS."
+        }
+      ]
+    }
+    </script>
+
   </head>
+
   <body>
+    <!-- SEO content: visible to crawlers, hidden from users (React replaces this) -->
     <div id="root">
-      <!-- Header -->
       <header>
-        <h1>Web Developer in Kozhikode, Kerala - Faheem Ismail</h1>
+        <h1>Web Developer in Kozhikode, Kerala - Muhammed Faheem</h1>
         <p>Full-Stack Developer specializing in MERN stack applications using React.js, Node.js, MongoDB, and TypeScript. Building scalable and high-performance web apps in Kozhikode, Nadapuram, Vadakara, Kerala.</p>
       </header>
 
-      <!-- About Section -->
       <section id="about">
-        <h2>About Faheem Ismail - Software Developer in Kerala</h2>
-        <p>I am a passionate MERN Stack Developer based in Kozhikode, Kerala. I have 2+ years of experience creating full-stack web applications for clients and personal projects. I specialize in modern technologies such as React.js, Node.js, TypeScript, MongoDB, Express.js, and Next.js.</p>
-        <img src="/images/fayeem.webp" alt="Faheem Ismail - Web Developer in Kozhikode">
+        <h2>About Muhammed Faheem - Software Developer in Kerala</h2>
+        <p>I am a passionate MERN Stack Developer based in Kozhikode, Kerala. I have 2+ years of experience creating full-stack web applications. I specialize in React.js, Node.js, TypeScript, MongoDB, Express.js, and Next.js.</p>
+        <img src="/images/fayeem.webp" alt="Muhammed Faheem - Web Developer in Kozhikode" width="400" height="400" />
       </section>
 
-      <!-- Projects Section -->
+      <section id="skills">
+        <h2>Skills - MERN Stack Developer Kerala</h2>
+        <p>React.js, Next.js, Node.js, Express.js, MongoDB, PostgreSQL, TypeScript, JavaScript, Tailwind CSS, Redux, AWS, Docker, Git, REST APIs, Socket.IO, JWT, Redis.</p>
+      </section>
+
+      <section id="experience">
+        <h2>Work Experience - Full-Stack Developer Kozhikode</h2>
+        <p>Full-Stack Developer at WebEyeCraft, Kozhikode, Kerala (2025). Developed scalable web applications using Next.js, Node.js, and TypeScript.</p>
+      </section>
+
       <section id="projects">
-        <h2>Projects by Web Developer in Kozhikode & Nadapuram</h2>
-        <p>Here are some of my latest projects showcasing full-stack development expertise using MERN stack and modern web technologies.</p>
+        <h2>Projects by Web Developer in Kozhikode &amp; Nadapuram</h2>
+        <ul>
+          <li><a href="https://github.com/fayeemismail/celoura-server">Celoura Travels - MERN Stack Travel App</a></li>
+          <li><a href="https://netflix-clone-app5.vercel.app/">Netflix Clone - React Firebase</a></li>
+          <li><a href="https://meehaf.onrender.com/">Meehaf eCommerce - Node.js MongoDB</a></li>
+          <li><a href="https://truth-or-dare-fa.vercel.app/">Truth or Dare - React Game</a></li>
+        </ul>
       </section>
 
-      <!-- Contact Section -->
       <section id="contact">
-        <h2>Contact Faheem Ismail - Web Developer in Kerala</h2>
-        <p>Reach out via email <a href="mailto:faheemmuhammed703@gmail.com">faheemmuhammed703@gmail.com</a> or connect on <a href="https://linkedin.com/in/faheemismail">LinkedIn</a>.</p>
+        <h2>Contact Muhammed Faheem - Web Developer in Kerala</h2>
+        <p>
+          Reach out via email <a href="mailto:faheemmuhammed703@gmail.com">faheemmuhammed703@gmail.com</a>,
+          phone <a href="tel:+919562062494">+91 9562062494</a>,
+          or connect on <a href="https://linkedin.com/in/faheemismail">LinkedIn</a>
+          and <a href="https://github.com/fayeemismail">GitHub</a>.
+        </p>
       </section>
     </div>
 
-    <!-- React Entry Point -->
+    <!-- React entry point -->
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- FOUC Fix: reveal body only after fonts are decoded -->
+    <script>
+      document.fonts.ready.then(function () {
+        document.body.style.visibility = 'visible';
+      });
+      // Safety fallback in case fonts.ready stalls
+      setTimeout(function () {
+        document.body.style.visibility = 'visible';
+      }, 1000);
+    </script>
   </body>
 </html>

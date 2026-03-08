@@ -1,65 +1,131 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const NAV_ITEMS = ['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'];
 
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
-  ];
+/**
+ * Fixed top navigation.
+ * - Transparent at top, frosted-glass when scrolled.
+ * - Highlights the active section based on scroll position.
+ * - Collapses to a hamburger on mobile.
+ */
+const Header = ({ loaded }) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [open,     setOpen]     = useState(false);
+  const [active,   setActive]   = useState('home');
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      const ids = NAV_ITEMS.map(n => n.toLowerCase());
+      for (const id of [...ids].reverse()) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) {
+          setActive(id);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 w-full bg-[#F5EEDC] shadow-sm z-50">
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold text-[#406008]">
-            Muhammed Faheem
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-[#000000] hover:text-[#406008] transition-colors duration-300 font-medium"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
+    <header
+      style={{
+        position: 'fixed', top: 0, width: '100%', zIndex: 1000,
+        transition: 'all 0.4s ease',
+        background: scrolled ? 'rgba(10,14,26,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled
+          ? '1px solid rgba(201,168,76,0.08)'
+          : '1px solid transparent',
+        opacity: loaded ? 1 : 0,
+        transform: loaded ? 'translateY(0)' : 'translateY(-20px)',
+      }}
+    >
+      <nav
+        style={{
+          maxWidth: 1200, margin: '0 auto',
+          padding: '24px 40px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        }}
+      >
+        {/* Logo */}
+        <a href="#home" style={{ textDecoration: 'none' }}>
+          <span style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 22, fontWeight: 400, letterSpacing: '0.12em',
+            color: 'var(--cream)',
+          }}>
+            M<span style={{ color: 'var(--gold)' }}>.</span>Faheem
+          </span>
+        </a>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-[#406008]"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+        {/* Desktop Navigation */}
+        <div className="desktop-nav" style={{ display: 'flex', gap: 40 }}>
+          {NAV_ITEMS.map(n => (
+            <a
+              key={n}
+              href={`#${n.toLowerCase()}`}
+              className={`nav-item${active === n.toLowerCase() ? ' active' : ''}`}
+            >
+              {n}
+            </a>
+          ))}
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 space-y-4 pb-4">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block text-[#000000] hover:text-[#406008] transition-colors duration-300 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-        )}
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="mobile-toggle"
+          style={{
+            background: 'none', border: 'none',
+            cursor: 'none', color: 'var(--gold)',
+            display: 'none',
+          }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="1.5">
+            {open
+              ? <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
+              : <path d="M4 8h16M4 16h16" strokeLinecap="round" />
+            }
+          </svg>
+        </button>
       </nav>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div style={{
+          background: 'var(--navy)',
+          borderTop: '1px solid rgba(201,168,76,0.1)',
+          padding: '20px 40px 30px',
+        }}>
+          {NAV_ITEMS.map(n => (
+            <a
+              key={n}
+              href={`#${n.toLowerCase()}`}
+              onClick={() => setOpen(false)}
+              style={{
+                display: 'block',
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 12, letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'var(--muted)',
+                textDecoration: 'none',
+                padding: '12px 0',
+                borderBottom: '1px solid rgba(201,168,76,0.06)',
+                transition: 'color 0.3s',
+              }}
+              onMouseEnter={e => e.target.style.color = 'var(--gold)'}
+              onMouseLeave={e => e.target.style.color = 'var(--muted)'}
+            >
+              {n}
+            </a>
+          ))}
+        </div>
+      )}
     </header>
   );
 };
