@@ -129,9 +129,9 @@ const Hero = () => {
             style={{ display: 'flex', gap: 48, marginTop: 64, animationDelay: '0.75s' }}
           >
             {[
-              ['2+',  'Years Experience'],
+              ['2+', 'Years Experience'],
               ['10+', 'Projects Built'],
-              ['5+',  'Technologies'],
+              ['5+', 'Technologies'],
             ].map(([num, label]) => (
               <div key={label}>
                 <p style={{
@@ -233,10 +233,12 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
+      {/* Scroll indicator — hidden on mobile */}
       <div style={{
         position: 'absolute', bottom: 40, left: '50%',
         transform: 'translateX(-50%)',
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
+        visibility: 'var(--scroll-indicator-visibility, visible)',
       }}>
         <p style={{
           fontFamily: "'DM Mono', monospace",
