@@ -58,46 +58,46 @@ const GitHubIcon = () => (
 const ProjectCard = ({ project, delay, visible }) => (
   <div
     className={`project-card reveal reveal-delay-${delay}${visible ? ' visible' : ''}`}
+    style={{
+      background: '#180407',
+      border: '1px solid rgba(255, 0, 46, 0.15)',
+      borderRadius: 12,
+      overflow: 'hidden',
+    }}
   >
     {/* Image */}
-    <div style={{ height: 240, position: 'relative', overflow: 'hidden', background: 'var(--navy-light)' }}>
+    <div style={{ height: 240, position: 'relative', overflow: 'hidden', background: '#120305' }}>
       <img
         src={project.image}
         alt={project.title}
         style={{
           width: '100%', height: '100%', objectFit: 'cover',
-          transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)',
+          transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)',
         }}
-        onMouseEnter={e => e.target.style.transform = 'scale(1.06)'}
+        onMouseEnter={e => e.target.style.transform = 'scale(1.03)'}
         onMouseLeave={e => e.target.style.transform = 'scale(1)'}
       />
-      {/* Gradient overlay */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(10,14,26,0.95) 0%, rgba(10,14,26,0.4) 60%, transparent 100%)',
-      }} />
-
       {/* Category badge */}
-      <div style={{ position: 'absolute', top: 20, left: 20 }}>
+      <div style={{ position: 'absolute', top: 16, left: 16 }}>
         <span style={{
-          fontFamily: "'DM Mono', monospace",
-          fontSize: 10, letterSpacing: '0.15em',
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 10, letterSpacing: '0.05em',
           textTransform: 'uppercase',
-          background: 'rgba(10,14,26,0.8)',
-          border: '1px solid rgba(201,168,76,0.3)',
-          color: 'var(--gold)',
-          padding: '5px 12px', borderRadius: 2,
+          background: '#120305',
+          border: '1px solid rgba(255, 0, 46, 0.2)',
+          color: '#FF002E',
+          padding: '4px 10px', borderRadius: 4,
         }}>
           {project.category}
         </span>
       </div>
 
       {/* Large decorative number */}
-      <div style={{ position: 'absolute', top: 20, right: 20 }}>
+      <div style={{ position: 'absolute', top: 16, right: 16 }}>
         <span style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: 48, fontWeight: 700,
-          color: 'rgba(201,168,76,0.2)', lineHeight: 1,
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 14, fontWeight: 500,
+          color: 'rgba(255, 0, 46, 0.3)', lineHeight: 1,
         }}>
           {project.num}
         </span>
@@ -105,50 +105,64 @@ const ProjectCard = ({ project, delay, visible }) => (
     </div>
 
     {/* Content */}
-    <div style={{ padding: '32px 32px 28px' }}>
+    <div style={{ padding: '28px 28px 24px' }}>
       <h3 style={{
-        fontFamily: "'Cormorant Garamond', serif",
-        fontSize: 28, fontWeight: 400,
-        color: 'var(--cream)', marginBottom: 12,
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 22, fontWeight: 700,
+        color: '#FFFFFF', marginBottom: 12,
+        letterSpacing: '-0.01em',
       }}>
         {project.title}
       </h3>
       <p style={{
         fontSize: 14, lineHeight: 1.8,
-        color: 'rgba(242,237,215,0.6)',
-        fontWeight: 300, marginBottom: 24,
+        color: 'rgba(255, 255, 255, 0.7)',
+        fontWeight: 400, marginBottom: 24,
       }}>
         {project.description}
       </p>
 
       {/* Tech pills */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 28 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 24 }}>
         {project.technologies.map((t, j) => (
-          <span key={j} className="skill-pill" style={{ fontSize: 10 }}>{t}</span>
+          <span
+            key={j}
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 10,
+              color: '#FFFFFF',
+              background: '#120305',
+              border: '1px solid rgba(255, 0, 46, 0.2)',
+              padding: '4px 10px',
+              borderRadius: 4,
+            }}
+          >
+            {t}
+          </span>
         ))}
       </div>
 
       {/* Action links */}
       <div style={{
         display: 'flex', gap: 20,
-        borderTop: '1px solid rgba(201,168,76,0.08)',
-        paddingTop: 24,
+        borderTop: '1px solid rgba(255, 0, 46, 0.15)',
+        paddingTop: 20,
       }}>
         <a
           href={project.github}
           target="_blank"
           rel="noreferrer"
           style={{
-            fontFamily: "'DM Mono', monospace",
-            fontSize: 11, letterSpacing: '0.15em',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11, letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: 'var(--muted)',
+            color: 'rgba(255, 255, 255, 0.7)',
             textDecoration: 'none',
             display: 'flex', alignItems: 'center', gap: 8,
-            transition: 'color 0.3s',
+            transition: 'color 0.2s',
           }}
-          onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
-          onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}
+          onMouseEnter={e => e.currentTarget.style.color = '#FF002E'}
+          onMouseLeave={e => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
         >
           <GitHubIcon /> Source Code
         </a>
@@ -159,17 +173,21 @@ const ProjectCard = ({ project, delay, visible }) => (
             target="_blank"
             rel="noreferrer"
             style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 11, letterSpacing: '0.15em',
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 11, letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              color: 'var(--gold)',
+              color: '#FF002E',
               textDecoration: 'none',
               display: 'flex', alignItems: 'center',
               gap: 8, marginLeft: 'auto',
-              transition: 'gap 0.3s',
+              transition: 'gap 0.2s, color 0.2s',
             }}
-            onMouseEnter={e => e.currentTarget.style.gap = '14px'}
-            onMouseLeave={e => e.currentTarget.style.gap = '8px'}
+            onMouseEnter={e => {
+              e.currentTarget.style.gap = '12px';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.gap = '8px';
+            }}
           >
             Live Demo →
           </a>
@@ -189,43 +207,37 @@ const Projects = () => {
       ref={ref}
       style={{
         padding: '120px 40px',
-        background: 'var(--midnight)',
+        background: '#120305',
         position: 'relative',
       }}
     >
-      {/* Ambient glow */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: 'radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.04) 0%, transparent 60%)',
-        pointerEvents: 'none',
-      }} />
-
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
 
         {/* Header row */}
         <div
           className={`reveal${vis ? ' visible' : ''}`}
           style={{
-            marginBottom: 72,
+            marginBottom: 48,
             display: 'flex', justifyContent: 'space-between',
             alignItems: 'flex-end', flexWrap: 'wrap', gap: 20,
           }}
         >
           <div>
-            <p className="section-label">Portfolio</p>
+            <p className="section-label" style={{ color: '#FF002E' }}>Portfolio</p>
             <h2 style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 'clamp(40px, 5vw, 64px)',
-              fontWeight: 300,
-              color: 'var(--cream)', lineHeight: 1.1,
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 'clamp(32px, 4vw, 48px)',
+              fontWeight: 800,
+              color: '#FFFFFF', lineHeight: 1.2,
+              letterSpacing: '-0.02em',
             }}>
               Featured<br />
-              <span className="text-gold-gradient" style={{ fontStyle: 'italic' }}>Projects</span>
+              <span style={{ color: '#FF002E' }}>Projects</span>
             </h2>
           </div>
           <p style={{
-            fontSize: 14, color: 'var(--muted)',
-            maxWidth: 280, lineHeight: 1.7, fontWeight: 300,
+            fontSize: 14, color: 'rgba(255, 255, 255, 0.7)',
+            maxWidth: 280, lineHeight: 1.7, fontWeight: 400,
           }}>
             A selection of my most impactful work, each built with care and precision.
           </p>
@@ -234,7 +246,7 @@ const Projects = () => {
         {/* Project cards */}
         <div
           className="projects-grid"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(520px, 1fr))', gap: 2 }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(520px, 1fr))', gap: 16 }}
         >
           {PROJECTS.map((p, i) => (
             <ProjectCard
@@ -251,3 +263,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

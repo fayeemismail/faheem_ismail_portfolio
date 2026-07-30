@@ -48,9 +48,9 @@ const Contact = () => {
         title: 'Message Sent!',
         text: 'Thank you for reaching out. I\'ll get back to you soon.',
         icon: 'success',
-        confirmButtonColor: '#C9A84C',
-        background: '#0F1629',
-        color: '#F2EDD7',
+        confirmButtonColor: '#FF002E',
+        background: '#120305',
+        color: '#FFFFFF',
         confirmButtonText: 'Wonderful',
       });
 
@@ -62,9 +62,9 @@ const Contact = () => {
         title: 'Something went wrong',
         text: 'Please try again or email me directly at faheemmuhammed703@gmail.com',
         icon: 'error',
-        confirmButtonColor: '#C9A84C',
-        background: '#0F1629',
-        color: '#F2EDD7',
+        confirmButtonColor: '#FF002E',
+        background: '#120305',
+        color: '#FFFFFF',
         confirmButtonText: 'Try Again',
       });
     } finally {
@@ -78,36 +78,29 @@ const Contact = () => {
       ref={ref}
       style={{
         padding: '120px 40px',
-        background: 'var(--navy)',
+        background: '#120305',
         position: 'relative', overflow: 'hidden',
       }}
     >
-      {/* Top accent line */}
+      {/* Top border line */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-        background: 'linear-gradient(90deg, transparent, var(--gold), transparent)',
-      }} />
-
-      {/* Ambient glow */}
-      <div style={{
-        position: 'absolute', bottom: 0, right: 0,
-        width: 600, height: 600, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
-        pointerEvents: 'none',
+        background: 'rgba(255, 0, 46, 0.15)',
       }} />
 
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
 
         {/* Heading */}
-        <div className={`reveal${vis ? ' visible' : ''}`} style={{ marginBottom: 72 }}>
-          <p className="section-label">Get In Touch</p>
+        <div className={`reveal${vis ? ' visible' : ''}`} style={{ marginBottom: 48 }}>
+          <p className="section-label" style={{ color: '#FF002E' }}>Get In Touch</p>
           <h2 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(40px, 5vw, 64px)',
-            fontWeight: 300, color: 'var(--cream)', lineHeight: 1.1,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 'clamp(32px, 4vw, 48px)',
+            fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2,
+            letterSpacing: '-0.02em',
           }}>
             Let's build something<br />
-            <span className="text-gold-gradient" style={{ fontStyle: 'italic' }}>extraordinary</span>
+            <span style={{ color: '#FF002E' }}>extraordinary</span>
           </h2>
         </div>
 
@@ -120,9 +113,9 @@ const Contact = () => {
             <p
               className={`reveal reveal-delay-1${vis ? ' visible' : ''}`}
               style={{
-                fontSize: 16, lineHeight: 1.9,
-                color: 'rgba(242,237,215,0.65)',
-                marginBottom: 48, fontWeight: 300,
+                fontSize: 15, lineHeight: 1.8,
+                color: 'rgba(255, 255, 255, 0.7)',
+                marginBottom: 40, fontWeight: 400,
               }}
             >
               I'm always open to discussing new opportunities, interesting projects,
@@ -139,40 +132,40 @@ const Contact = () => {
                 href={href}
                 className={`reveal reveal-delay-${i + 2}${vis ? ' visible' : ''}`}
                 style={{
-                  display: 'flex', alignItems: 'center', gap: 20,
-                  marginBottom: 20, textDecoration: 'none',
-                  padding: '20px 24px',
-                  border: '1px solid rgba(201,168,76,0.1)',
-                  background: 'rgba(10,14,26,0.3)',
-                  transition: 'all 0.3s',
+                  display: 'flex', alignItems: 'center', gap: 16,
+                  marginBottom: 16, textDecoration: 'none',
+                  padding: '16px 20px',
+                  border: '1px solid rgba(255, 0, 46, 0.15)',
+                  background: '#180407',
+                  borderRadius: 8,
+                  transition: 'all 0.2s',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)';
-                  e.currentTarget.style.background   = 'rgba(201,168,76,0.05)';
+                  e.currentTarget.style.borderColor = '#FF002E';
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'rgba(201,168,76,0.1)';
-                  e.currentTarget.style.background   = 'rgba(10,14,26,0.3)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 0, 46, 0.15)';
                 }}
               >
                 <div style={{
-                  width: 40, height: 40,
-                  border: '1px solid rgba(201,168,76,0.3)',
+                  width: 32, height: 32,
+                  border: '1px solid rgba(255, 0, 46, 0.3)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   flexShrink: 0,
+                  borderRadius: 4,
                 }}>
-                  <div style={{ width: 8, height: 8, background: 'var(--gold)', borderRadius: '50%' }} />
+                  <div style={{ width: 6, height: 6, background: '#FF002E', borderRadius: '50%' }} />
                 </div>
                 <div>
                   <p style={{
-                    fontFamily: "'DM Mono', monospace",
-                    fontSize: 9, letterSpacing: '0.25em',
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 9, letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: 'var(--gold)', marginBottom: 4,
+                    color: 'rgba(255, 255, 255, 0.5)', marginBottom: 4,
                   }}>
                     {label}
                   </p>
-                  <p style={{ fontSize: 14, color: 'var(--cream)' }}>{val}</p>
+                  <p style={{ fontSize: 14, color: '#FFFFFF', fontWeight: 600 }}>{val}</p>
                 </div>
               </a>
             ))}
@@ -190,24 +183,24 @@ const Contact = () => {
                   rel="noreferrer"
                   title={label}
                   style={{
-                    width: 44, height: 44,
-                    border: '1px solid rgba(201,168,76,0.2)',
+                    width: 40, height: 40,
+                    border: '1px solid rgba(255, 0, 46, 0.15)',
+                    borderRadius: 6,
+                    background: '#180407',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontFamily: "'DM Mono', monospace",
-                    fontSize: 10, letterSpacing: '0.05em',
-                    color: 'var(--muted)',
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 10,
+                    color: '#FFFFFF',
                     textDecoration: 'none',
-                    transition: 'all 0.3s',
+                    transition: 'all 0.2s',
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = 'var(--gold)';
-                    e.currentTarget.style.color        = 'var(--gold)';
-                    e.currentTarget.style.background   = 'rgba(201,168,76,0.08)';
+                    e.currentTarget.style.borderColor = '#FF002E';
+                    e.currentTarget.style.color        = '#FF002E';
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)';
-                    e.currentTarget.style.color        = 'var(--muted)';
-                    e.currentTarget.style.background   = 'transparent';
+                    e.currentTarget.style.borderColor = 'rgba(255, 0, 46, 0.15)';
+                    e.currentTarget.style.color        = '#FFFFFF';
                   }}
                 >
                   {abbr}
@@ -220,14 +213,19 @@ const Contact = () => {
           <div
             className={`reveal reveal-delay-2${vis ? ' visible' : ''}`}
             style={{
-              background: 'rgba(10,14,26,0.5)',
-              border: '1px solid rgba(201,168,76,0.1)',
-              padding: '48px 40px',
+              background: '#180407',
+              border: '1px solid rgba(255, 0, 46, 0.15)',
+              borderRadius: 12,
+              padding: '40px',
             }}
           >
             <form onSubmit={handleSubmit}>
-              <div style={{ marginBottom: 28 }}>
-                <label htmlFor="name" className="luxury-label">Your Name</label>
+              <div style={{ marginBottom: 24 }}>
+                <label htmlFor="name" style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
+                  color: 'rgba(255, 255, 255, 0.6)', marginBottom: 8, display: 'block',
+                }}>Your Name</label>
                 <input
                   id="name"
                   name="name"
@@ -236,11 +234,20 @@ const Contact = () => {
                   value={form.name}
                   onChange={handleChange}
                   required
+                  style={{
+                    width: '100%', background: '#120305',
+                    border: '1px solid rgba(255, 0, 46, 0.2)',
+                    color: '#FFFFFF', padding: '14px 18px', borderRadius: 8,
+                  }}
                 />
               </div>
 
-              <div style={{ marginBottom: 28 }}>
-                <label htmlFor="email" className="luxury-label">Email Address</label>
+              <div style={{ marginBottom: 24 }}>
+                <label htmlFor="email" style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
+                  color: 'rgba(255, 255, 255, 0.6)', marginBottom: 8, display: 'block',
+                }}>Email Address</label>
                 <input
                   id="email"
                   name="email"
@@ -250,11 +257,20 @@ const Contact = () => {
                   value={form.email}
                   onChange={handleChange}
                   required
+                  style={{
+                    width: '100%', background: '#120305',
+                    border: '1px solid rgba(255, 0, 46, 0.2)',
+                    color: '#FFFFFF', padding: '14px 18px', borderRadius: 8,
+                  }}
                 />
               </div>
 
-              <div style={{ marginBottom: 36 }}>
-                <label htmlFor="message" className="luxury-label">Message</label>
+              <div style={{ marginBottom: 32 }}>
+                <label htmlFor="message" style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
+                  color: 'rgba(255, 255, 255, 0.6)', marginBottom: 8, display: 'block',
+                }}>Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -264,30 +280,42 @@ const Contact = () => {
                   value={form.message}
                   onChange={handleChange}
                   required
-                  style={{ resize: 'vertical', minHeight: 120 }}
+                  style={{
+                    width: '100%', background: '#120305',
+                    border: '1px solid rgba(255, 0, 46, 0.2)',
+                    color: '#FFFFFF', padding: '14px 18px', borderRadius: 8,
+                    resize: 'vertical', minHeight: 120,
+                  }}
                 />
               </div>
 
               <button
                 type="submit"
-                className="btn-primary"
-                style={{ width: '100%', opacity: isLoading ? 0.7 : 1 }}
+                style={{
+                  width: '100%',
+                  background: 'transparent',
+                  border: '1px solid #FF002E',
+                  color: '#FFFFFF',
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 600,
+                  fontSize: 13,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  padding: '14px 32px',
+                  cursor: 'pointer',
+                  borderRadius: 8,
+                  transition: 'all 0.3s ease',
+                  opacity: isLoading ? 0.7 : 1,
+                }}
                 disabled={isLoading}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = '#FF002E';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = 'transparent';
+                }}
               >
-                {isLoading ? (
-                  <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-                    <svg
-                      style={{ animation: 'spinSlow 1s linear infinite' }}
-                      width="16" height="16" viewBox="0 0 24 24"
-                      fill="none" stroke="currentColor" strokeWidth="2"
-                    >
-                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-                    </svg>
-                    Sending…
-                  </span>
-                ) : (
-                  'Send Message'
-                )}
+                {isLoading ? 'Sending…' : 'Send Message'}
               </button>
             </form>
           </div>
@@ -298,3 +326,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

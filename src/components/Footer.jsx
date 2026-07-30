@@ -10,8 +10,8 @@ const FOOTER_LINKS = [
 
 const Footer = () => (
   <footer style={{
-    background: 'var(--midnight)',
-    borderTop: '1px solid rgba(201,168,76,0.12)',
+    background: '#120305',
+    borderTop: '1px solid rgba(255, 0, 46, 0.15)',
     padding: '48px 40px',
   }}>
     <div
@@ -27,20 +27,21 @@ const Footer = () => (
       {/* Brand */}
       <div>
         <p style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: 20, fontWeight: 400,
-          letterSpacing: '0.1em',
-          color: 'var(--cream)', marginBottom: 4,
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 15, fontWeight: 600,
+          letterSpacing: '0.05em',
+          color: '#FFFFFF', marginBottom: 4,
+          textTransform: 'uppercase',
         }}>
-          M<span style={{ color: 'var(--gold)' }}>.</span>Faheem
+          Faheem<span style={{ color: '#FF002E' }}>.</span>
         </p>
         <p style={{
-          fontFamily: "'DM Mono', monospace",
-          fontSize: 10, letterSpacing: '0.2em',
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 10, letterSpacing: '0.15em',
           textTransform: 'uppercase',
-          color: 'var(--muted)',
+          color: 'rgba(255, 255, 255, 0.5)',
         }}>
-          MERN Stack Developer
+          Full-Stack Developer
         </p>
       </div>
 
@@ -53,15 +54,15 @@ const Footer = () => (
             target={href.startsWith('mailto') || href.startsWith('tel') ? undefined : '_blank'}
             rel="noreferrer"
             style={{
-              fontFamily: "'DM Mono', monospace",
+              fontFamily: "'JetBrains Mono', monospace",
               fontSize: 10, letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--muted)',
+              color: 'rgba(255, 255, 255, 0.6)',
               textDecoration: 'none',
-              transition: 'color 0.3s',
+              transition: 'color 0.2s',
             }}
-            onMouseEnter={e => e.target.style.color = 'var(--gold)'}
-            onMouseLeave={e => e.target.style.color = 'var(--muted)'}
+            onMouseEnter={e => e.target.style.color = '#FF002E'}
+            onMouseLeave={e => e.target.style.color = 'rgba(255, 255, 255, 0.6)'}
           >
             {label}
           </a>
@@ -70,9 +71,9 @@ const Footer = () => (
 
       {/* Copyright */}
       <p style={{
-        fontFamily: "'DM Mono', monospace",
+        fontFamily: "'JetBrains Mono', monospace",
         fontSize: 10,
-        color: 'rgba(242,237,215,0.25)',
+        color: 'rgba(255, 255, 255, 0.3)',
         letterSpacing: '0.1em',
       }}>
         © {new Date().getFullYear()} · Crafted with precision

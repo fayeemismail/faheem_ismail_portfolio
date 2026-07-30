@@ -26,29 +26,30 @@ const Experience = () => {
       ref={ref}
       style={{
         padding: '120px 40px',
-        background: 'var(--navy)',
+        background: '#120305',
         position: 'relative',
       }}
     >
       {/* Top accent line */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-        background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)',
+        background: 'rgba(255, 0, 46, 0.15)',
       }} />
 
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
 
         {/* Heading */}
-        <div className={`reveal${vis ? ' visible' : ''}`} style={{ marginBottom: 72 }}>
-          <p className="section-label">Career</p>
+        <div className={`reveal${vis ? ' visible' : ''}`} style={{ marginBottom: 48 }}>
+          <p className="section-label" style={{ color: '#FF002E' }}>Career</p>
           <h2 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(40px, 5vw, 64px)',
-            fontWeight: 300,
-            color: 'var(--cream)', lineHeight: 1.1,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 'clamp(32px, 4vw, 48px)',
+            fontWeight: 800,
+            color: '#FFFFFF', lineHeight: 1.2,
+            letterSpacing: '-0.02em',
           }}>
             Work<br />
-            <span className="text-gold-gradient" style={{ fontStyle: 'italic' }}>Experience</span>
+            <span style={{ color: '#FF002E' }}>Experience</span>
           </h2>
         </div>
 
@@ -59,39 +60,41 @@ const Experience = () => {
         >
           {/* Left: sticky position card */}
           <div className={`reveal reveal-delay-1${vis ? ' visible' : ''}`}>
-            <div style={{ position: 'sticky', top: 120 }}>
+            <div style={{
+              position: 'sticky', top: 120,
+              background: '#180407',
+              border: '1px solid rgba(255, 0, 46, 0.15)',
+              padding: '24px',
+              borderRadius: 10,
+            }}>
               <p style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: 10, letterSpacing: '0.25em',
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11, letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: 'var(--gold)', marginBottom: 12,
+                color: '#FF002E', marginBottom: 8,
               }}>
                 2025 — Present
               </p>
               <h3 style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 36, fontWeight: 400,
-                color: 'var(--cream)', marginBottom: 8,
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 24, fontWeight: 700,
+                color: '#FFFFFF', marginBottom: 8,
+                letterSpacing: '-0.01em',
               }}>
                 Full-Stack Developer
               </h3>
               <p style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: 13, color: 'var(--muted)', marginBottom: 4,
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 13, color: '#FFFFFF', marginBottom: 4,
               }}>
                 WebEyeCraft
               </p>
               <p style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: 11, color: 'rgba(242,237,215,0.3)',
-                marginBottom: 32,
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11, color: 'rgba(255, 255, 255, 0.6)',
               }}>
                 Kozhikode, Kerala
               </p>
-              <div style={{
-                width: 1, height: 80,
-                background: 'linear-gradient(to bottom, var(--gold), transparent)',
-              }} />
             </div>
           </div>
 
@@ -103,33 +106,27 @@ const Experience = () => {
                 className={`reveal reveal-delay-${(i % 3) + 1}${vis ? ' visible' : ''}`}
                 style={{
                   display: 'flex', gap: 24,
-                  marginBottom: 40, paddingBottom: 40,
-                  borderBottom: '1px solid rgba(201,168,76,0.07)',
+                  marginBottom: 24, padding: '24px',
+                  background: '#180407',
+                  border: '1px solid rgba(255, 0, 46, 0.15)',
+                  borderRadius: 10,
                 }}
               >
                 {/* Dot */}
-                <div style={{ flexShrink: 0, marginTop: 4 }}>
+                <div style={{ flexShrink: 0, marginTop: 6 }}>
                   <div style={{
                     width: 8, height: 8,
-                    border: '1.5px solid var(--gold)',
+                    border: '1.5px solid #FF002E',
                     borderRadius: '50%',
-                    background: 'var(--midnight)',
-                    position: 'relative',
-                  }}>
-                    <div style={{
-                      position: 'absolute', top: '50%', left: '50%',
-                      transform: 'translate(-50%,-50%)',
-                      width: 3, height: 3,
-                      borderRadius: '50%', background: 'var(--gold)',
-                    }} />
-                  </div>
+                    background: '#FF002E',
+                  }} />
                 </div>
 
                 <div>
-                  <p style={{ fontWeight: 600, color: 'var(--cream)', marginBottom: 8, fontSize: 15 }}>
+                  <p style={{ fontWeight: 700, color: '#FFFFFF', marginBottom: 8, fontSize: 16 }}>
                     {title}
                   </p>
-                  <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(242,237,215,0.6)', fontWeight: 300 }}>
+                  <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(255, 255, 255, 0.7)', fontWeight: 400 }}>
                     {desc}
                   </p>
                 </div>
@@ -143,3 +140,4 @@ const Experience = () => {
 };
 
 export default Experience;
+

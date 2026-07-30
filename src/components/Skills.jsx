@@ -38,75 +38,81 @@ const Skills = () => {
       ref={ref}
       style={{
         padding: '120px 40px',
-        background: 'var(--midnight)',
+        background: '#120305',
         position: 'relative',
       }}
     >
-      {/* Ambient glow */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: 'radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.04) 0%, transparent 60%)',
-        pointerEvents: 'none',
-      }} />
-
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
 
         {/* Heading */}
-        <div className={`reveal${vis ? ' visible' : ''}`} style={{ marginBottom: 72 }}>
-          <p className="section-label">Expertise</p>
+        <div className={`reveal${vis ? ' visible' : ''}`} style={{ marginBottom: 48 }}>
+          <p className="section-label" style={{ color: '#FF002E' }}>Expertise</p>
           <h2 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(40px, 5vw, 64px)',
-            fontWeight: 300,
-            color: 'var(--cream)', lineHeight: 1.1,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 'clamp(32px, 4vw, 48px)',
+            fontWeight: 800,
+            color: '#FFFFFF', lineHeight: 1.2,
+            letterSpacing: '-0.02em',
           }}>
             Skills &amp;<br />
-            <span className="text-gold-gradient" style={{ fontStyle: 'italic' }}>
-              Technologies
-            </span>
+            <span style={{ color: '#FF002E' }}>Technologies</span>
           </h2>
         </div>
 
         {/* Category grid */}
         <div
           className="skills-grid"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 2 }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 16 }}
         >
           {SKILL_CATEGORIES.map((cat, i) => (
             <div
               key={i}
               className={`reveal reveal-delay-${(i % 3) + 1}${vis ? ' visible' : ''}`}
               style={{
-                padding: '36px 32px',
-                background: 'var(--navy)',
-                border: '1px solid rgba(201,168,76,0.08)',
+                padding: '28px 24px',
+                background: '#180407',
+                border: '1px solid rgba(255, 0, 46, 0.15)',
+                borderRadius: 8,
                 position: 'relative', overflow: 'hidden',
-                transition: 'border-color 0.3s, background 0.3s',
+                transition: 'all 0.25s ease',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'rgba(201,168,76,0.25)';
-                e.currentTarget.style.background   = 'var(--navy-light)';
+                e.currentTarget.style.borderColor = '#FF002E';
+                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(201,168,76,0.08)';
-                e.currentTarget.style.background   = 'var(--navy)';
+                e.currentTarget.style.borderColor = 'rgba(255, 0, 46, 0.15)';
+                e.currentTarget.style.transform = 'none';
               }}
             >
               {/* Decorative large number */}
-              <span className="deco-num">{String(i + 1).padStart(2, '0')}</span>
+              <span className="deco-num" style={{ color: 'rgba(255, 0, 46, 0.08)' }}>{String(i + 1).padStart(2, '0')}</span>
 
               <p style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: 10, letterSpacing: '0.25em',
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10, letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: 'var(--gold)', marginBottom: 20,
+                color: '#FF002E', marginBottom: 20,
               }}>
                 {cat.title}
               </p>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {cat.skills.map((skill, j) => (
-                  <span key={j} className="skill-pill">{skill}</span>
+                  <span
+                    key={j}
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: 11,
+                      color: '#FFFFFF',
+                      background: '#120305',
+                      border: '1px solid rgba(255, 0, 46, 0.2)',
+                      padding: '6px 14px',
+                      borderRadius: 6,
+                    }}
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>
@@ -118,3 +124,4 @@ const Skills = () => {
 };
 
 export default Skills;
+

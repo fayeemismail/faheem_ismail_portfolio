@@ -1,9 +1,10 @@
 import React from 'react';
 
 /**
- * Hero / landing section.
- * Features: animated headline, gold shimmer text, profile photo
- * with spinning ring decoration, floating badges, and stat counters.
+ * Hero — Clean 3-Color Modern Editorial Layout
+ * Background: #120305 (Deep Dark Red)
+ * Accent: #FF002E (Pure Red)
+ * Text: #FFFFFF (White)
  */
 const Hero = () => {
   const scrollTo = (id) =>
@@ -13,139 +14,247 @@ const Hero = () => {
     <section
       id="home"
       style={{
+        background: '#120305',
         minHeight: '100vh',
-        display: 'flex', alignItems: 'center',
-        position: 'relative', overflow: 'hidden',
-        padding: '120px 40px 80px',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '140px 0 220px',
       }}
     >
-      {/* Background glow orbs */}
-      <div style={{
-        position: 'absolute', top: '20%', right: '10%',
-        width: 500, height: 500, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-      <div style={{
-        position: 'absolute', bottom: '10%', left: '5%',
-        width: 400, height: 400, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
+      <div className="hero-split">
+        {/* ═══ LEFT: Image with Abstract Pure Red Organic Blob BEHIND ═══ */}
+        <div className="hero-image-side">
+          <div className="hero-image-wrapper">
+            {/* Irregular Fluid Organic Red Blob Shape — strictly behind (zIndex: 1) */}
+            <svg
+              className="hero-organic-blob"
+              viewBox="0 0 500 500"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{
+                position: 'absolute',
+                top: '45%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '130%',
+                height: '130%',
+                zIndex: 1,
+                pointerEvents: 'none',
+                filter: 'drop-shadow(0 0 60px rgba(255, 0, 46, 0.6))',
+                animation: 'blobPulse 12s ease-in-out infinite alternate',
+              }}
+            >
+              <defs>
+                <radialGradient id="pureRedBlobGrad" cx="40%" cy="40%" r="60%">
+                  <stop offset="0%" stopColor="#FF002E" />
+                  <stop offset="70%" stopColor="#C40023" />
+                  <stop offset="100%" stopColor="#800017" />
+                </radialGradient>
+              </defs>
+              <path
+                d="M430,320 Q480,180 370,100 Q260,20 150,90 Q40,160 70,300 Q100,440 230,460 Q360,480 430,320 Z"
+                fill="url(#pureRedBlobGrad)"
+              />
+            </svg>
 
-      {/* Subtle grid */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage:
-          'linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),' +
-          'linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-        pointerEvents: 'none',
-      }} />
+            {/* Subject image cutout — strictly in front (zIndex: 2, NO mask overlay) */}
+            <img
+              src="/images/hero-bg.png"
+              alt="Muhammed Faheem Ismail — Full-Stack Developer"
+              className="hero-image animate-fadeUp"
+              style={{
+                position: 'relative',
+                zIndex: 2,
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                objectPosition: 'bottom',
+                maskImage: 'none',
+                WebkitMaskImage: 'none',
+                filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6))',
+                animationDelay: '0.2s',
+              }}
+            />
+          </div>
+        </div>
 
-      {/* Content */}
-      <div
-        className="hero-grid"
-        style={{
-          maxWidth: 1200, margin: '0 auto', width: '100%',
-          display: 'grid', gridTemplateColumns: '1fr auto',
-          gap: 60, alignItems: 'center',
-        }}
-      >
-        {/* ── Left: text ── */}
-        <div>
-          <p className="section-label animate-fadeUp" style={{ animationDelay: '0.2s' }}>
-            Portfolio 2025
-          </p>
-
-          <h1
-            className="animate-fadeUp"
+        {/* ═══ RIGHT: Minimal 3-Color Editorial Content ═══ */}
+        <div className="hero-content-side">
+          {/* Serif callout */}
+          <div
+            className="animate-fadeRight"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 'clamp(52px, 7vw, 96px)',
-              fontWeight: 300,
-              lineHeight: 1.05,
-              color: 'var(--cream)',
-              marginBottom: 8,
-              animationDelay: '0.3s',
+              fontFamily: "'Playfair Display', serif",
+              fontStyle: 'italic',
+              fontSize: 'clamp(24px, 3.5vw, 36px)',
+              fontWeight: 400,
+              color: 'rgba(255, 255, 255, 0.7)',
+              marginBottom: 4,
+              animationDelay: '0.25s',
             }}
           >
-            Muhammed<br />
-            <span className="text-gold-gradient" style={{ fontStyle: 'italic' }}>
-              Faheem
+            I'm
+          </div>
+
+          {/* Name */}
+          <h1
+            className="animate-fadeRight"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 'clamp(44px, 6vw, 76px)',
+              fontWeight: 900,
+              lineHeight: 1.02,
+              color: '#FFFFFF',
+              marginBottom: 16,
+              animationDelay: '0.35s',
+              letterSpacing: '-0.04em',
+              textTransform: 'uppercase',
+            }}
+          >
+            MUHAMMED<br />
+            <span style={{ color: '#FF002E' }}>
+              FAHEEM
             </span>
           </h1>
 
-          {/* Role divider */}
+          {/* Role line */}
           <div
-            className="animate-fadeUp"
+            className="animate-fadeRight"
             style={{
-              display: 'flex', alignItems: 'center', gap: 16,
-              margin: '24px 0 32px',
+              display: 'flex', alignItems: 'center', gap: 14,
+              marginBottom: 24,
               animationDelay: '0.45s',
             }}
           >
-            <span style={{ height: 1, width: 50, background: 'var(--gold)', flexShrink: 0 }} />
+            <span style={{ height: 1, width: 36, background: '#FF002E', flexShrink: 0 }} />
             <p style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 12, letterSpacing: '0.25em',
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 12, letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'var(--muted)',
+              color: '#FF002E',
+              fontWeight: 600,
             }}>
-              MERN Stack · Full-Stack Developer
+              Product Builder &amp; Full-Stack Developer
             </p>
           </div>
 
+          {/* Description */}
           <p
-            className="animate-fadeUp"
+            className="animate-fadeRight"
             style={{
-              fontSize: 17, lineHeight: 1.8,
-              color: 'rgba(242,237,215,0.65)',
-              maxWidth: 520, marginBottom: 48,
-              fontWeight: 300,
+              fontSize: 16, lineHeight: 1.8,
+              color: 'rgba(255, 255, 255, 0.7)',
+              maxWidth: 490, marginBottom: 36,
+              fontWeight: 400,
               animationDelay: '0.55s',
             }}
           >
-            Crafting scalable, high-performance web applications with 2+ years of
-            hands-on experience. Clean code, elegant architecture, seamless experiences.
+            Crafting high-performance web applications with modern architecture,
+            clean code, and craft-driven user experiences. Engineering scalable products
+            with the MERN stack.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons — Clean Transparent 3-Color Aesthetics */}
           <div
-            className="animate-fadeUp"
+            className="animate-fadeRight"
             style={{ display: 'flex', gap: 16, flexWrap: 'wrap', animationDelay: '0.65s' }}
           >
-            <button className="btn-primary" onClick={() => scrollTo('contact')}>
+            <button
+              onClick={() => scrollTo('contact')}
+              style={{
+                background: 'transparent',
+                border: '1px solid #FF002E',
+                color: '#FFFFFF',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                fontSize: 13,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                padding: '14px 32px',
+                cursor: 'pointer',
+                borderRadius: 8,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = '#FF002E';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 0, 46, 0.4)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'none';
+              }}
+            >
               Let's Work Together
+              <span style={{ fontSize: 16 }}>→</span>
             </button>
-            <button className="btn-outline" onClick={() => scrollTo('projects')}>
-              View Projects
+
+            <button
+              onClick={() => scrollTo('projects')}
+              style={{
+                background: 'transparent',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#FFFFFF',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 500,
+                fontSize: 13,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                padding: '14px 32px',
+                cursor: 'pointer',
+                borderRadius: 8,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = '#FF002E';
+                e.currentTarget.style.color = '#FF002E';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                e.currentTarget.style.color = '#FFFFFF';
+                e.currentTarget.style.transform = 'none';
+              }}
+            >
+              View Work
             </button>
           </div>
 
           {/* Stats row */}
           <div
-            className="animate-fadeUp stats-row"
-            style={{ display: 'flex', gap: 48, marginTop: 64, animationDelay: '0.75s' }}
+            className="animate-fadeRight stats-row"
+            style={{
+              display: 'flex', gap: 44, marginTop: 52,
+              animationDelay: '0.75s',
+            }}
           >
             {[
-              ['2+', 'Years Experience'],
+              ['2+', 'Years Exp.'],
               ['10+', 'Projects Built'],
-              ['5+', 'Technologies'],
+              ['100%', 'Commitment'],
             ].map(([num, label]) => (
               <div key={label}>
                 <p style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: 36, fontWeight: 300,
-                  color: 'var(--gold)', lineHeight: 1,
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: 32, fontWeight: 800,
+                  color: '#FFFFFF', lineHeight: 1,
+                  letterSpacing: '-0.03em',
                 }}>
                   {num}
                 </p>
                 <p style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: 10, letterSpacing: '0.15em',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10, letterSpacing: '0.14em',
                   textTransform: 'uppercase',
-                  color: 'var(--muted)', marginTop: 4,
+                  color: 'rgba(255, 255, 255, 0.5)', marginTop: 8,
                 }}>
                   {label}
                 </p>
@@ -153,104 +262,29 @@ const Hero = () => {
             ))}
           </div>
         </div>
-
-        {/* ── Right: profile photo ── */}
-        <div className="animate-fadeIn" style={{ animationDelay: '0.5s', display: 'flex', justifyContent: 'center' }}>
-          <div style={{ position: 'relative', width: 280, height: 340 }}>
-            {/* Spinning dashed ring */}
-            <div
-              className="animate-spinSlow"
-              style={{
-                position: 'absolute', inset: -24,
-                border: '1px dashed rgba(201,168,76,0.2)',
-                borderRadius: '50%',
-              }}
-            />
-            <div style={{
-              position: 'absolute', inset: -12,
-              border: '1px solid rgba(201,168,76,0.08)',
-              borderRadius: '50%',
-            }} />
-
-            {/* Photo */}
-            <div style={{
-              width: '100%', height: '100%',
-              borderRadius: 4, overflow: 'hidden',
-              border: '1px solid rgba(201,168,76,0.25)',
-              position: 'relative',
-            }}>
-              <img
-                src="/images/fayeem.webp"
-                alt="Muhammed Faheem — MERN Stack Developer"
-                style={{
-                  width: '100%', height: '100%',
-                  objectFit: 'cover', objectPosition: 'top',
-                  filter: 'contrast(1.05) brightness(0.9)',
-                  transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)',
-                }}
-                onMouseEnter={e => e.target.style.transform = 'scale(1.05)'}
-                onMouseLeave={e => e.target.style.transform = 'scale(1)'}
-              />
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'linear-gradient(to top, rgba(10,14,26,0.4) 0%, transparent 50%)',
-              }} />
-            </div>
-
-            {/* Floating badges */}
-            <div
-              className="animate-float"
-              style={{
-                position: 'absolute', bottom: -16, right: -16,
-                background: 'var(--midnight)',
-                border: '1px solid rgba(201,168,76,0.3)',
-                padding: '10px 18px', borderRadius: 2,
-              }}
-            >
-              <p style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: 10, color: 'var(--gold)', letterSpacing: '0.15em',
-              }}>
-                MERN · TS · AWS
-              </p>
-            </div>
-
-            <div style={{
-              position: 'absolute', top: -12, left: -16,
-              background: 'var(--gold)',
-              padding: '8px 14px', borderRadius: 2,
-            }}>
-              <p style={{
-                fontFamily: "'DM Mono', monospace",
-                fontSize: 10, color: 'var(--midnight)',
-                fontWeight: 600, letterSpacing: '0.1em',
-              }}>
-                AVAILABLE
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Scroll indicator */}
-      {/* Scroll indicator — hidden on mobile */}
-      <div style={{
-        position: 'absolute', bottom: 40, left: '50%',
-        transform: 'translateX(-50%)',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-        visibility: 'var(--scroll-indicator-visibility, visible)',
-      }}>
+      <div
+        style={{
+          position: 'absolute', bottom: 32, left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', gap: 8, zIndex: 4,
+        }}
+      >
         <p style={{
-          fontFamily: "'DM Mono', monospace",
-          fontSize: 9, letterSpacing: '0.3em',
-          textTransform: 'uppercase', color: 'var(--muted)',
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 9, letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: 'rgba(255, 255, 255, 0.5)',
         }}>
           Scroll
         </p>
         <div style={{
-          width: 1, height: 48,
-          background: 'linear-gradient(to bottom, var(--gold), transparent)',
-          animation: 'fadeUp 1.5s ease infinite',
+          width: 1, height: 32,
+          background: 'linear-gradient(to bottom, #FF002E, transparent)',
+          animation: 'fadeUp 1.8s ease infinite',
         }} />
       </div>
     </section>
@@ -258,3 +292,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
+

@@ -2,12 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const NAV_ITEMS = ['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact'];
 
-/**
- * Fixed top navigation.
- * - Transparent at top, frosted-glass when scrolled.
- * - Highlights the active section based on scroll position.
- * - Collapses to a hamburger on mobile.
- */
 const Header = ({ loaded }) => {
   const [scrolled, setScrolled] = useState(false);
   const [open,     setOpen]     = useState(false);
@@ -34,41 +28,43 @@ const Header = ({ loaded }) => {
     <header
       style={{
         position: 'fixed', top: 0, width: '100%', zIndex: 1000,
-        transition: 'all 0.4s ease',
-        background: scrolled ? 'rgba(10,14,26,0.92)' : 'transparent',
+        transition: 'all 0.3s ease',
+        background: scrolled ? 'rgba(18, 3, 5, 0.92)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: scrolled
-          ? '1px solid rgba(201,168,76,0.08)'
+          ? '1px solid rgba(255, 0, 46, 0.15)'
           : '1px solid transparent',
         opacity: loaded ? 1 : 0,
-        transform: loaded ? 'translateY(0)' : 'translateY(-20px)',
+        transform: loaded ? 'translateY(0)' : 'translateY(-10px)',
       }}
     >
       <nav
         style={{
-          maxWidth: 1200, margin: '0 auto',
-          padding: '24px 40px',
+          maxWidth: 1280, margin: '0 auto',
+          padding: '18px 48px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}
       >
         {/* Logo */}
         <a href="#home" style={{ textDecoration: 'none' }}>
           <span style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 22, fontWeight: 400, letterSpacing: '0.12em',
-            color: 'var(--cream)',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 16, fontWeight: 600, letterSpacing: '0.05em',
+            color: '#FFFFFF',
+            textTransform: 'uppercase',
           }}>
-            M<span style={{ color: 'var(--gold)' }}>.</span>Faheem
+            Faheem<span style={{ color: '#FF002E' }}>.</span>
           </span>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="desktop-nav" style={{ display: 'flex', gap: 40 }}>
+        <div className="desktop-nav" style={{ display: 'flex', gap: 32 }}>
           {NAV_ITEMS.map(n => (
             <a
               key={n}
               href={`#${n.toLowerCase()}`}
               className={`nav-item${active === n.toLowerCase() ? ' active' : ''}`}
+              style={{ color: active === n.toLowerCase() ? '#FFFFFF' : 'rgba(255, 255, 255, 0.6)' }}
             >
               {n}
             </a>
@@ -81,7 +77,7 @@ const Header = ({ loaded }) => {
           className="mobile-toggle"
           style={{
             background: 'none', border: 'none',
-            cursor: 'none', color: 'var(--gold)',
+            cursor: 'pointer', color: '#FFFFFF',
             display: 'none',
           }}
         >
@@ -98,9 +94,10 @@ const Header = ({ loaded }) => {
       {/* Mobile Menu */}
       {open && (
         <div style={{
-          background: 'var(--navy)',
-          borderTop: '1px solid rgba(201,168,76,0.1)',
-          padding: '20px 40px 30px',
+          background: '#120305',
+          borderTop: '1px solid rgba(255, 0, 46, 0.15)',
+          borderBottom: '1px solid rgba(255, 0, 46, 0.15)',
+          padding: '16px 48px 24px',
         }}>
           {NAV_ITEMS.map(n => (
             <a
@@ -109,17 +106,17 @@ const Header = ({ loaded }) => {
               onClick={() => setOpen(false)}
               style={{
                 display: 'block',
-                fontFamily: "'DM Mono', monospace",
+                fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 12, letterSpacing: '0.2em',
                 textTransform: 'uppercase',
-                color: 'var(--muted)',
+                color: 'rgba(255, 255, 255, 0.6)',
                 textDecoration: 'none',
                 padding: '12px 0',
-                borderBottom: '1px solid rgba(201,168,76,0.06)',
-                transition: 'color 0.3s',
+                borderBottom: '1px solid rgba(255, 0, 46, 0.15)',
+                transition: 'color 0.2s',
               }}
-              onMouseEnter={e => e.target.style.color = 'var(--gold)'}
-              onMouseLeave={e => e.target.style.color = 'var(--muted)'}
+              onMouseEnter={e => e.target.style.color = '#FF002E'}
+              onMouseLeave={e => e.target.style.color = 'rgba(255, 255, 255, 0.6)'}
             >
               {n}
             </a>
@@ -131,3 +128,4 @@ const Header = ({ loaded }) => {
 };
 
 export default Header;
+
