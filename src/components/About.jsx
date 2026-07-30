@@ -203,7 +203,7 @@ const About = () => {
               }}
             >
               {/* Top Tag & Counter indicator inside Card */}
-              <div>
+              <div key={activeStep} className="animate-dust-blur">
                 <div style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   marginBottom: 10, flexWrap: 'wrap', gap: 10,
@@ -232,7 +232,6 @@ const About = () => {
                   color: '#FFFFFF',
                   marginBottom: 8,
                   lineHeight: 1.25,
-                  transition: 'opacity 0.3s ease',
                 }}>
                   {currentCard.title}
                 </h3>
@@ -263,7 +262,7 @@ const About = () => {
               </div>
 
               {/* Bottom: Skills & Action buttons */}
-              <div>
+              <div key={`bottom-${activeStep}`} className="animate-dust-blur">
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 14 }}>
                   {currentCard.skills.map((skill) => (
                     <span
@@ -405,6 +404,8 @@ const About = () => {
 
               {/* Dynamic Key Metric Counter Card (Updates as you scroll!) */}
               <div
+                key={`metric-${activeStep}`}
+                className="animate-dust-blur"
                 style={{
                   background: '#180407',
                   border: '1px solid rgba(255, 0, 46, 0.2)',
