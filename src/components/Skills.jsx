@@ -40,18 +40,31 @@ const Skills = () => {
         padding: '120px 40px',
         background: '#120305',
         position: 'relative',
+        zIndex: 10,
+        borderRadius: '32px 32px 0 0',
+        borderTop: '1px solid rgba(255, 0, 46, 0.3)',
+        boxShadow: '0 -30px 80px rgba(0, 0, 0, 0.95), 0 -10px 40px rgba(255, 0, 46, 0.12)',
+        marginTop: '-30px',
       }}
     >
+      {/* Subtle top indicator bar for sheet handle aesthetic */}
+      <div style={{
+        width: 48, height: 4,
+        background: 'rgba(255, 0, 46, 0.3)',
+        borderRadius: 2,
+        margin: '0 auto 40px',
+      }} />
+
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
 
         {/* Heading */}
-        <div className={`reveal${vis ? ' visible' : ''}`} style={{ marginBottom: 48 }}>
-          <p className="section-label" style={{ color: '#FF002E' }}>Expertise</p>
+        <div className={`reveal${vis ? ' visible' : ''}`} style={{ marginBottom: 56, textAlign: 'left' }}>
+          <p className="section-label" style={{ color: '#FF002E', marginBottom: 12 }}>Expertise</p>
           <h2 style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: 'clamp(32px, 4vw, 48px)',
+            fontSize: 'clamp(32px, 4vw, 52px)',
             fontWeight: 800,
-            color: '#FFFFFF', lineHeight: 1.2,
+            color: '#FFFFFF', lineHeight: 1.15,
             letterSpacing: '-0.02em',
           }}>
             Skills &amp;<br />
