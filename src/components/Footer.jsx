@@ -13,6 +13,8 @@ const Footer = () => (
     background: '#120305',
     borderTop: '1px solid rgba(255, 0, 46, 0.15)',
     padding: '48px 40px',
+    position: 'relative',
+    zIndex: 10,
   }}>
     <div
       className="footer-inner"

@@ -209,6 +209,7 @@ const Projects = () => {
         padding: '120px 40px',
         background: '#120305',
         position: 'relative',
+        zIndex: 10,
       }}
     >
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>

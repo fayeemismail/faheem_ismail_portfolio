@@ -577,6 +577,25 @@ body {
   .hero-content-side { align-items: center; text-align: center; }
 }
 
+/* ═══ SKILLS STACKED CARDS LAYOUT ═══ */
+.skills-stacked-layout {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .skills-stacked-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .skills-sticky-left {
+    display: none;
+  }
+}
+
+
 @media (max-width: 768px) {
   .desktop-nav { display: none !important; }
   .mobile-toggle { display: block !important; }

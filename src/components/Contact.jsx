@@ -80,6 +80,7 @@ const Contact = () => {
         padding: '120px 40px',
         background: '#120305',
         position: 'relative', overflow: 'hidden',
+        zIndex: 10,
       }}
     >
       {/* Top border line */}

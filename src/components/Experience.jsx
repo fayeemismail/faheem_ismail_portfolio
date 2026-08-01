@@ -28,6 +28,7 @@ const Experience = () => {
         padding: '120px 40px',
         background: '#120305',
         position: 'relative',
+        zIndex: 10,
       }}
     >
       {/* Top accent line */}

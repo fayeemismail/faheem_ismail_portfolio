@@ -81,19 +81,20 @@ const About = () => {
         const totalScrollable = containerRect.height - windowHeight;
 
         if (totalScrollable > 0) {
-          const stickyTopOffset = 70; // Distance from top header
+          const stickyTopOffset = 0; // Pinned cleanly at viewport top 0
           const scrolled = stickyTopOffset - containerRect.top;
           let progress = scrolled / totalScrollable;
           progress = Math.max(0, Math.min(1, progress));
 
-          if (progress < 0.25) {
+          // Step swapping happens across 0% to 68% of scroll track:
+          if (progress < 0.17) {
             setActiveStep(0); // 01 / CRAFT & ARCHITECTURE
-          } else if (progress < 0.50) {
+          } else if (progress < 0.34) {
             setActiveStep(1); // 02 / USER EXPERIENCE
-          } else if (progress < 0.75) {
+          } else if (progress < 0.51) {
             setActiveStep(2); // 03 / PERFORMANCE
           } else {
-            setActiveStep(3); // 04 / VISION & IMPACT
+            setActiveStep(3); // 04 / VISION & IMPACT (stays active while Skills overlays About completely!)
           }
         }
       }
@@ -112,6 +113,7 @@ const About = () => {
       style={{
         background: '#120305',
         position: 'relative',
+        zIndex: 1,
       }}
     >
       {/* Top subtle border */}
@@ -120,25 +122,31 @@ const About = () => {
         background: 'rgba(255, 0, 46, 0.15)',
       }} />
 
-      {/* ═══ TALL STICKY SCROLL CONTAINER (PINNED WHO AM I + CARD TOGETHER) ═══ */}
+      {/* ═══ TALL STICKY SCROLL CONTAINER (PINNED 100VH VIEWPORT FRAME) ═══ */}
       <div
         ref={cardSectionRef}
         style={{
           position: 'relative',
-          minHeight: '260vh', // 260vh scroll track
+          minHeight: '320vh', // 320vh scroll track allows Skills to completely overlay About!
         }}
       >
-        {/* Sticky viewport frame pinning WHO AM I + Card together */}
+        {/* Pinned 100vh Sticky Viewport Frame */}
         <div
           style={{
             position: 'sticky',
-            top: '70px',
-            paddingTop: '16px',
-            paddingBottom: '16px',
+            top: 0,
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            zIndex: 1,
+            paddingTop: '20px',
+            paddingBottom: '20px',
             maxWidth: 1200,
             margin: '0 auto',
             paddingLeft: 24,
             paddingRight: 24,
+            boxSizing: 'border-box',
           }}
         >
           {/* ═══ GIANT "WHO AM I?" SCROLL-DRIVEN HEADING (ORIGINAL SIZE) ═══ */}
