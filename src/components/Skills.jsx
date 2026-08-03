@@ -107,8 +107,10 @@ const Skills = () => {
             </div>
 
             {/* Sticky Portrait Card (bg-2.png) */}
-            <div style={{
-              borderRadius: 24,
+            <div
+              className="skills-portrait-card"
+              style={{
+                borderRadius: 24,
               overflow: 'hidden',
               border: '1px solid rgba(255, 0, 46, 0.3)',
               boxShadow: '0 25px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(255, 0, 46, 0.15)',

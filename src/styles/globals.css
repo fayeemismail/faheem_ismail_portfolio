@@ -588,10 +588,15 @@ body {
 @media (max-width: 900px) {
   .skills-stacked-layout {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
   .skills-sticky-left {
-    display: none;
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 8px;
+  }
+  .skills-portrait-card {
+    display: none !important;
   }
 }
 
