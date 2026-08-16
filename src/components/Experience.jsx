@@ -220,7 +220,7 @@ const Experience = () => {
                       color: 'rgba(255, 255, 255, 0.7)',
                       fontWeight: 500,
                     }}>
-                      📍 {exp.location}
+                      {exp.location}
                     </span>
                   </p>
                 </div>
